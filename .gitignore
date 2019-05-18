@@ -1,0 +1,10 @@
+# IDEs
+.idea/
+.vscode/
+
+# parcel cache
+.cache/
+build/
+node_modules/
+npm*
+*lock*
