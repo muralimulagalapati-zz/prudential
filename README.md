@@ -15,5 +15,7 @@ You can replace `npm` with `yarn` in the above commands.
 2. A state management library (redux, mobx) could be introduced. I didn't follow the recommended architecture.
 3. Good styling can be done, with better loaders.
 4. Snapshot tests and integration tests could be writtened.
+5. config and .env files could be used to store configurations and secrets.
+6. A low latency logger agent could be used (optional).
 
 I couldn't connect to Goodreads API due to CORS error, so I had hosted a web service in heroku that would talk to Goodreads API. I took that opportunity to process and filter data and send a refined structure. Backend service code is at [prudential-helper](https://github.com/muralimulagalapati/prudential-helper/). I doesn't have any tests associated.
