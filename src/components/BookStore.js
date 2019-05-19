@@ -9,7 +9,8 @@ export default class BookStore extends Component {
     super(props)
     this.state = {
       search: '',
-      results: []
+      results: [],
+      loading: false
     }
     this.onSearchChange = this.onSearchChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,12 +23,13 @@ export default class BookStore extends Component {
 
   handleSubmit (ev) {
     ev.preventDefault()
+    this.setState({ loading: true })
     this.getBooksData(this.state.search)
   }
 
   getBooksData (query) {
-    axios(`${host}/search?q=${query}`)
-    .then(response => this.setState({ results: response.data }))
+    axios.get(`${host}/search?q=${query}`)
+    .then(response => this.setState({ results: response.data, loading: false }))
     .catch(err => console.error(err))
   }
 
@@ -46,7 +48,9 @@ export default class BookStore extends Component {
         </form>
         <ul className='list-unstyled'>
           {
-            this.state.results.map(result => (
+            this.state.loading
+            ? <p>Loading ...</p>
+            : this.state.results.map(result => (
               <li key={result.key}>
                 <Link to={{
                   pathname: `/books/${result.id}`,

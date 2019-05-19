@@ -60,13 +60,13 @@ class BookDetails extends Component {
                     starRatedColor='orange'
                   />
                 </div>
-                <p className="col-sm-3">{ratingsCount} ratings</p>
-                <p className="col-sm-3">{reviewsCount} reviews</p>
+                <p className="col-sm-3 ratings">{ratingsCount} ratings</p>
+                <p className="col-sm-3 reviews">{reviewsCount} reviews</p>
               </div>
               {
                 description !== null
                 ? <div>
-                    <div>{ReactHtmlParser(showdesc)}
+                    <div className='desc'>{ReactHtmlParser(showdesc)}
                       {
                         (description.length > 300
                           && description !== showdesc)
@@ -75,7 +75,7 @@ class BookDetails extends Component {
                       }
                     </div>
                   </div>
-                : <p>Loading...</p>
+                : <p className='descloading'>Loading...</p>
               }
             </div>
           </div>
